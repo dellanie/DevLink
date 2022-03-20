@@ -1,8 +1,9 @@
 import React,{ Fragment, useState} from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
-import {setAlert} from '../../actions/alert'
+import { Link,Navigate } from 'react-router-dom';
+import {setAlert} from '../../actions/alert';
+import {register} from '../../actions/auth'
 
 const Register = () => {
 
@@ -14,6 +15,8 @@ const Register = () => {
     }); // using an object to store register  form
 
     const dispatch = useDispatch()
+
+    const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
     
     const { name, email, password, password2} = formData; //destructure form data
 
@@ -26,6 +29,7 @@ const Register = () => {
             console.log('password do not match')
         } else{
             console.log('success')
+            dispatch(register({name,email,password}));            
 
             //sign in new user in client
            {/* const newUser = {
@@ -49,6 +53,11 @@ const Register = () => {
             }*/}
         }
     }
+
+    if (isAuthenticated){
+        return <Navigate to="/dashboard"/>
+    }
+
   return (
     <Fragment>
         <h1 className="large text-primary">Sign Up</h1>
@@ -61,7 +70,7 @@ const Register = () => {
                 name="name" 
                 value={name} 
                 onChange={e => onChange(e)}
-                required />
+                 />
             </div>
             <div className="form-group">
             <input 
@@ -70,7 +79,7 @@ const Register = () => {
                 name="email" 
                 value={email} 
                 onChange={e => onChange(e)}
-                required /> 
+                 /> 
             
             <small className="form-text"
                 >This site uses Gravatar so if you want a profile image, use a
@@ -82,7 +91,7 @@ const Register = () => {
                 type="password"
                 placeholder="Password"
                 name="password"
-                minLength="6"
+                
                 value={password} 
                 onChange={e => onChange(e)}
 
@@ -93,7 +102,7 @@ const Register = () => {
                 type="password"
                 placeholder="Confirm Password"
                 name="password2"
-                minLength="6"
+                
                 value={password2} 
                 onChange={e => onChange(e)}
             />

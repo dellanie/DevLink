@@ -1,5 +1,8 @@
 import React,{ Fragment, useState} from 'react';
-import { Link } from 'react-router-dom';
+import { Link,Navigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import {login} from '../../actions/auth';
+
 const Login = () => {
 
     const [formData, setFormData] = useState({
@@ -9,13 +12,23 @@ const Login = () => {
 
     const { email, password, } = formData; //destructure form data
 
+    const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+
+    const dispatch = useDispatch();
+
     const onChange = e => setFormData({...formData, [e.target.name]:e.target.value});
 
     const onSubmit = async e => {
         e.preventDefault();
         console.log('success')
-        
+        dispatch(login(email,password));        
     }
+
+    //Redirect if logged in
+    if (isAuthenticated){
+        return <Navigate to="/dashboard"/>
+    }
+
   return (
     <Fragment>
         <h1 className="large text-primary">Sign In</h1>
