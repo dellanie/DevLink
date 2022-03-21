@@ -6,6 +6,8 @@ import Landing from './components/layout/Landing';
 import Alert from './components/layout/Alert';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
+import Dashboard from './components/dashboard/Dashboard';
+import AllRoutes from './components/routing/AllRoutes';
 //Redux
 import { Provider } from 'react-redux';
 import store from './store';
@@ -35,6 +37,7 @@ function App() {
               <Routes>
                 <Route exact path='/register' element={<Register/>}/>
                 <Route exact path='/login' element={<Login/>}/>
+                
               </Routes>
           </section>
         </Fragment>
@@ -44,3 +47,5 @@ function App() {
 }
 
 export default App;
+
+//if you want user to be logged in to view specific routes. use Privateroute instead of just Routes
