@@ -1,12 +1,13 @@
 import React from 'react'
 import { useDispatch,useSelector } from 'react-redux'
-import { Route, Navigate } from 'react-router-dom'
+import { Route, Navigate, Routes } from 'react-router-dom'
 
 const PrivateRoute = ({component: Component, ...rest}) => {
     const auth = useSelector(state => state.auth);
     const {loading, isAuthenticated } = auth;
 
   return (
+      <Routes>
     <Route
         {...rest}
         render={props =>
@@ -17,6 +18,7 @@ const PrivateRoute = ({component: Component, ...rest}) => {
             )
         }
     />
+    </Routes>
   )
 }
 

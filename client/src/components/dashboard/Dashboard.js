@@ -13,9 +13,14 @@ function Dashboard() {
   },[dispatch]);
 
   return (
-    <div>
-      Dashboard
-    </div>
+    <section className='container'>
+      <div>
+        <h1>
+        Dashboard
+        </h1>
+        
+      </div>
+    </section>  
   )
 }
 
