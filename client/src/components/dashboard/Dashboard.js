@@ -4,9 +4,9 @@ import { getCurrentProfile } from '../../actions/profile';
 
 function Dashboard() {
 
-  const dispatch = useDispatch();
   const {profile} = useSelector(state => state.profile);
   const {user} = useSelector(state => state.auth);
+  const dispatch = useDispatch(); 
 
   useEffect(() =>{
     dispatch(getCurrentProfile());
