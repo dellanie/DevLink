@@ -13,6 +13,7 @@ import { Provider } from 'react-redux';
 import store from './store';
 import { loadUser } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
+import CreateProfile from './components/profile-form/CreateProfile';
 import PrivateRoute from './components/routing/PrivateRoute';
 
 if(localStorage.token){
@@ -36,7 +37,8 @@ function App() {
                 <Route exact path='/' element={<Landing/>} />
                 <Route exact path='/register' element={<Register/>}/>
                 <Route exact path='/login' element={<Login/>}/> 
-                <Route exact path='/dashboard' element={<Dashboard/>}/> 
+                <Route exact path='/dashboard' element={<Dashboard/>}/>
+                <Route exact path='/create-profile' element={<CreateProfile/>}/> 
               </Routes>
           
         </Fragment>

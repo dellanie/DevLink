@@ -26,7 +26,8 @@ const Navbar = () => {
       <li>
         <Link to='/dashboard'>
           <i className='fas fa-user'></i>{" "}
-          <span className='hide-sm'>Dashboard</span>
+          <span className='hide-sm'>Dashboard</span> 
+          {/* add span just to make sure icon shows on mobile devices */}
         </Link>
       </li>
       <li>

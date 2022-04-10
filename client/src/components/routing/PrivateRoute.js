@@ -6,8 +6,7 @@ const PrivateRoute = ({component: Component, ...rest}) => {
     const auth = useSelector(state => state.auth);
     const {loading, isAuthenticated } = auth;
 
-  return (
-      <Routes>
+  return ( 
     <Route
         {...rest}
         render={props =>
@@ -18,7 +17,6 @@ const PrivateRoute = ({component: Component, ...rest}) => {
             )
         }
     />
-    </Routes>
   )
 }
 
