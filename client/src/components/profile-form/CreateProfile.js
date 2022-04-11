@@ -4,7 +4,7 @@ import {Link,useNavigate} from 'react-router-dom'
 import { createProfile } from '../../actions/profile';
 
 
-const CreateProfile = () => {
+const CreateProfile = ({navigate}) => {
     const [formData,setFormData] = useState({
         company:'',
         website:'',
@@ -21,7 +21,7 @@ const CreateProfile = () => {
     });
     
 
-    const navigate = useNavigate();
+    //const navigate = useNavigate();
 
     const [displaySocialInputs,toggleSocialInputs] = useState(false);
     const dispatch = useDispatch();
@@ -46,7 +46,7 @@ const CreateProfile = () => {
 
     const onSubmit = e => {
       e.preventDefault();
-      dispatch(createProfile(formData, navigate));
+      dispatch(createProfile(formData, navigate,));
     };
 
   return (
