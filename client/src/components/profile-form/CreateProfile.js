@@ -4,7 +4,7 @@ import {Link,useNavigate} from 'react-router-dom'
 import { createProfile } from '../../actions/profile';
 
 
-const CreateProfile = ({navigate}) => {
+const CreateProfile = () => {
     const [formData,setFormData] = useState({
         company:'',
         website:'',
@@ -21,7 +21,7 @@ const CreateProfile = ({navigate}) => {
     });
     
 
-    //const navigate = useNavigate();
+    const navigate = useNavigate();
 
     const [displaySocialInputs,toggleSocialInputs] = useState(false);
     const dispatch = useDispatch();
@@ -50,8 +50,8 @@ const CreateProfile = ({navigate}) => {
     };
 
   return (
-    <Fragment>
-     <h1 class="large text-primary">
+    <section>
+     <h1 className="large text-primary">
         Create Your Profile
       </h1>
       <p className="lead">
@@ -157,9 +157,9 @@ const CreateProfile = ({navigate}) => {
 
         
         <input type="submit" className="btn btn-primary my-1" />
-        <a className="btn btn-light my-1" href="dashboard.html">Go Back</a>
+        <Link className="btn btn-light my-1" to="/dashboard">Go Back</Link>
       </form>    
-    </Fragment>
+    </section>
   )
 };
 export default CreateProfile
