@@ -8,14 +8,14 @@ const Experience = ({experience}) => {
     const dispatch = useDispatch;
 
     const experiences = experience.map(exp =>(
-        <tr key={exp.id}>
+        <tr key={exp._id}>
             <td>{exp.company}</td>
             <td className='hide-sm'>{exp.title}</td>
             <td>
                 {formatDate(exp.from)} - {exp.to ? formatDate(exp.to) : 'Now'}
             </td>
             <td>
-                <button onClick={()=>dispatch(deleteExperience(exp.id))}
+                <button onClick={()=>dispatch(deleteExperience(exp._id))}
                 className="btn btn-danger"
                 >Delete</button>
             </td>
