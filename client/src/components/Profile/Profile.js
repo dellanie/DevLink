@@ -15,8 +15,8 @@ const Profile = props => {
     const dispatch = useDispatch();
 
     useEffect(() =>{
-        dispatchEvent(getProfilesById(props.match.params.id));//to get id from url using props.match.....
-    },[dispatch,props.match.params.id]);
+        dispatch(getProfilesById(props.match));//to get id from url using props.match.....
+    },[dispatch,props.match]);
 
   return (
 

@@ -43,7 +43,7 @@ function App() {
                 <Route exact path='/register' element={<Register/>}/>
                 <Route exact path='/login' element={<Login/>}/> 
                 <Route exact path='/profiles' element={<Profiles/>}/>
-                <Route exact path='/profiles:id' element={<Profile/>}/>
+                <Route exact path='/profiles/:id' element={<Profile/>}/>
                 <Route exact path='/dashboard' element={<Dashboard/>}/>
                 <Route exact path='/create-profile' element={<CreateProfile/>}/> 
                 <Route exact path='/edit-profile' element={<EditProfile/>}/>
