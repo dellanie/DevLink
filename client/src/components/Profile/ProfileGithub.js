@@ -3,7 +3,7 @@ import {getGithubRepos} from '../../actions/profile';
 import {useSelector,useDispatch} from 'react-redux';
 import Spinner from '../layout/Spinner';
 
-const ProfileGithub = ({ username,gitGithubRepos,repos }) => {
+const ProfileGithub = ({ username,gitGithubRepos}) => {
 
     const repos = useSelector(state => state.profile.repos);
 
