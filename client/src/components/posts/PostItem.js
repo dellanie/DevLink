@@ -2,7 +2,7 @@ import React,{Fragment} from 'react'
 import {Link} from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import formatDate from '../../utils/formatDate';
-import { LinkedCameraSharp } from '@material-ui/icons';
+
 
 
 const PostItem = ({addLike,removeLike,deletePost,postId,post:{_id,text,name,avatar,user,likes,comments,date},showActions}) => {

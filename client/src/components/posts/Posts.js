@@ -10,24 +10,25 @@ export const Posts = () => {
 
     const {id} = useParams();
 
-    const {post,loading} =useSelector(state => state.post);
+    const {posts,loading} =useSelector((state) => state.post);
     const dispatch = useDispatch();
 
     useEffect(() =>{
         dispatch(getPosts(id));
-    },[dispatch,id,getPosts])
-  return loading || post === null ? (
-            <Spinner/>
-        ) : (
-             <Fragment>
-                 <Link to='/posts' className='btn'>
-                     Back To Posts
-                 </Link>
+    },[dispatch,id])
 
-                 <PostItem post={post}/>
-             </Fragment>
-        )
-  
-}
+    if (loading)  return <Spinner/>;
+
+  return( 
+       <div className='container'>
+            <Link to='/posts' className='btn'>
+                Back To Posts
+            </Link>
+            {posts.map((post) =>(
+                <PostItem key={post._id} post={post} />
+            ))}
+        </div >
+  );      
+};
 
 export default Posts;
