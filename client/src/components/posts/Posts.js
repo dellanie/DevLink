@@ -15,7 +15,7 @@ export const Posts = () => {
 
     useEffect(() =>{
         dispatch(getPosts);
-    },[dispatch,getPosts])
+    },[dispatch])
 
     if (loading)  return <Spinner/>;
 
