@@ -8,14 +8,14 @@ import PostItem from './PostItem';
 
 export const Posts = () => {
 
-    const {id} = useParams();
+    //const {id} = useParams();
 
     const {posts,loading} =useSelector((state) => state.post);
     const dispatch = useDispatch();
 
     useEffect(() =>{
-        dispatch(getPosts(id));
-    },[dispatch,id])
+        dispatch(getPosts);
+    },[dispatch,getPosts])
 
     if (loading)  return <Spinner/>;
 
