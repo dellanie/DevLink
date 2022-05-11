@@ -2,10 +2,11 @@ import React,{Fragment} from 'react'
 import {Link} from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import formatDate from '../../utils/formatDate';
+import { addLikes,removeLikes,deletePost  } from '../../actions/post';
 
 
 
-const PostItem = ({addLike,removeLike,deletePost,postId,post:{_id,text,name,avatar,user,likes,comments,date},showActions}) => {
+const PostItem = ({post}) => {
 
     const dispatch = useDispatch();
     const auth = useSelector(state => state.auth);
@@ -14,42 +15,42 @@ const PostItem = ({addLike,removeLike,deletePost,postId,post:{_id,text,name,avat
 
     <div className='post bg-white p-1 my-1'>
         <div>
-            <Link to={`/profile/${comments.user}`}>
-                <img className='round-img' src={comments.avatar} alt=''/>
-                <h4>{comments.name}</h4>
+            <Link to={`/profile/${post.user}`}>
+                <img className='round-img' src={post.avatar} alt=''/>
+                <h4>{post.name}</h4>
             </Link>
         </div>
         <div>
-            <p className='my-1'>{comments.text}</p>
+            <p className='my-1'>{post.text}</p>
             <p className='post-date'>
-                Posted on {formatDate(date)}
+                Posted on {formatDate(post.date)}
             </p>
-            {showActions && (
+            
                 <Fragment>
                     <button
-                        onClick={e => dispatch(addLike(_id))}
+                        onClick={() => dispatch(addLikes(post._id))}
                         type='button'
                         className='btn btn-light'
                     >
                         <i className='fas fa-thumbs-up'/>
-                        <span>{likes.length > 0 && <span>{likes.length}</span>}</span>
+                        <span>{post.likes.length > 0 && <span>{post.likes.length}</span>}</span>
                     </button>
                     <button
-                        onClick={() => dispatch(removeLike(_id))}
+                        onClick={() => dispatch(removeLikes(post._id))}
                         type='button'
                         className='btn btn-light'
                     >
                         <i className='fas fa-thumbs-down'/>
                     </button>
-                    <Link to={`/posts/${_id}`} className='btn btn-primary'>
+                    <Link to={`/posts/${post._id}`} className='btn btn-primary'>
                         Discussion{' '}
-                        {comments.length > 0 && (
-                            <span className='comment-count'>{comments.length}</span>
+                        {post.comments.length > 0 && (
+                            <span className='comment-count'>{post.comments.length}</span>
                         )}
                     </Link>
-                    {!auth.loading && user === auth.user._id && ( 
+                    {!auth.loading && post.user === auth.user._id && ( 
                         <button
-                            onClick={e => dispatch(deletePost(_id))}
+                            onClick={() => dispatch(deletePost(post._id))}
                             type='button'
                             className='btn btn-danger'
                         >
@@ -57,7 +58,7 @@ const PostItem = ({addLike,removeLike,deletePost,postId,post:{_id,text,name,avat
                         </button>
                     )}
                 </Fragment>
-            )}
+            
         </div>
 
     </div>

@@ -3,7 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import { getPosts } from '../../actions/post';
 import Spinner from '../layout/Spinner';
+import PostForm from './PostForm';
 import PostItem from './PostItem';
+
 
 
 export const Posts = () => {
@@ -14,7 +16,7 @@ export const Posts = () => {
     const dispatch = useDispatch();
 
     useEffect(() =>{
-        dispatch(getPosts);
+        dispatch(getPosts());
     },[dispatch])
 
     if (loading)  return <Spinner/>;
@@ -24,6 +26,7 @@ export const Posts = () => {
             <Link to='/posts' className='btn'>
                 Back To Posts
             </Link>
+            <PostForm/>
             {posts.map((post) =>(
                 <PostItem key={post._id} post={post} />
             ))}
