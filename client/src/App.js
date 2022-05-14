@@ -22,6 +22,7 @@ import AddEducation from './components/profile-form/AddEducation';
 import Profiles from './components/Profiles/Profiles';
 import Posts from './components/posts/Posts';
 import Profile from './components/Profile/Profile';
+import Post from './components/post/Post'
 
 if(localStorage.token){
   setAuthToken(localStorage.token)
@@ -51,11 +52,12 @@ function App() {
                 <Route exact path='/add-experience' element={<AddExperience/>}/>
                 <Route exact path='/add-education' element={<AddEducation/>}/>
                 <Route exact path='/posts' element={<Posts/>}/>
+                <Route exact path='/post/:id' element={<Post/>}/>
               </Routes>
           
         </Fragment>
       </Router>
-    </Provider>
+    </Provider> 
   );
 }
 

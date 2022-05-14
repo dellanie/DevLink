@@ -6,7 +6,7 @@ import { addLikes,removeLikes,deletePost  } from '../../actions/post';
 
 
 
-const PostItem = ({post}) => {
+const PostItem = ({post,showActions}) => {
 
     const dispatch = useDispatch();
     const auth = useSelector(state => state.auth);
@@ -25,7 +25,7 @@ const PostItem = ({post}) => {
             <p className='post-date'>
                 Posted on {formatDate(post.date)}
             </p>
-            
+                {showActions && 
                 <Fragment>
                     <button
                         onClick={() => dispatch(addLikes(post._id))}
@@ -42,7 +42,7 @@ const PostItem = ({post}) => {
                     >
                         <i className='fas fa-thumbs-down'/>
                     </button>
-                    <Link to={`/posts/${post._id}`} className='btn btn-primary'>
+                    <Link to={`/post/${post._id}`} className='btn btn-primary'>
                         Discussion{' '}
                         {post.comments.length > 0 && (
                             <span className='comment-count'>{post.comments.length}</span>
@@ -57,12 +57,14 @@ const PostItem = ({post}) => {
                             <i className='fas fa-times'/>
                         </button>
                     )}
-                </Fragment>
-            
+                </Fragment>}
         </div>
-
     </div>
-  )
-}
+  );
+};
+
+PostItem.defaultProps = {
+    showActions:true
+};
 
 export default PostItem

@@ -1,8 +1,8 @@
 import React,{useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {addPost} from '../../actions/post';
+import {addComment} from '../../actions/post';
 
-function PostForm() {
+const CommentForm = ({postId}) => {
 
     const [text,setText] = useState('');
 
@@ -10,13 +10,13 @@ function PostForm() {
   return (
     <div className="post-form">
       <div className="bg-primary p">
-        <h3>Say Something...</h3>
+        <h3>Leave a Comment</h3>
       </div>
       <form 
         className="form my-1"
         onSubmit={e => {
           e.preventDefault();
-          dispatch(addPost({text}));
+          dispatch(addComment(postId,{text}));
           setText('');
         }}
       >
@@ -34,5 +34,4 @@ function PostForm() {
     </div>
   )
 }
-
-export default PostForm
+export default CommentForm
